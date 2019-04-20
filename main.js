@@ -58,12 +58,7 @@ function clearDisplay() {
     // update information on keys pressed
     previousKeyType = keyType;
     keyType = "clear";
-    // displayKeyType();
 
-    // Remove .is-depressed class from all keys
-    // Array.from(this.parentNode.children).forEach(k => k.classList.remove('is-depressed'));
-
-    // this.classList.add('is-depressed');
     if (clear.innerText === "AC") {
         firstNumber = null;
         secondNumber = null;
@@ -136,7 +131,6 @@ function storeOperator() {
 
     
     if (!holdAction) firstNumber = Number(display.innerText);
-    // if (!(holdAction && (nextAction === "x" || nextAction === "÷"))) firstNumber = Number(display.innerText);
 
     previousAction = action;
     action = this.innerText;
@@ -144,12 +138,8 @@ function storeOperator() {
     // store low precedence operator
     if (action === "+" || action === "-") {
         holdAction = action;
-        // console.log("Holding action");
     } 
-
-    midFunction = true;
-    // updateCheck();
-    
+    midFunction = true;   
 }
    
 function calculate() {
@@ -158,8 +148,6 @@ function calculate() {
         // update information on keys pressed, but only if user hit equal
         previousKeyType = keyType;
         keyType = "calculate";
-        // holdAction = null;
-        // holdNumber = null;
     }
 
     // if consecutive calculation, result should move to fistNumber
@@ -191,7 +179,7 @@ function calculate() {
             holdNumber = null;
             
         } else if (holdAction && (nextAction === "x" || nextAction === "÷")) {
-            // firstNumber = Number(display.innerText);  
+            // do nothing
         }
         else {
             //store value on screen as second number
@@ -200,15 +188,12 @@ function calculate() {
 
         if (holdAction && (nextAction === "x" || nextAction === "÷")) {
             holdNumber = Number(display.innerText);
-            // console.log("Holding number " + holdNumber);
         }
    }   
     
-
     //check if user has provided an operator
     if (!action || (secondNumber != 0 && !secondNumber)) return;
-    
-    
+        
    console.log(action);
     
     if (action === "+") {
@@ -235,9 +220,7 @@ function calculate() {
     if(!(holdAction && (nextAction === "x" || nextAction === "÷"))) {
         display.innerText = Number(result.toFixed(7));
         firstNumber = result;
-        // secondNumber = null;
     }
-
 }
 
 // add number and operator button functionality
