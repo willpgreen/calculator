@@ -1,11 +1,3 @@
-// for checking
-// const showFirstNumber = document.getElementById('show-first');
-// const showSecondNumber = document.getElementById('show-second');
-// const showOperator = document.getElementById('show-operator');
-// const showKeyType = document.getElementById('show-key-type');
-// const showPreviousKeyType = document.getElementById('show-prev-key');
-// const showHold = document.getElementById('show-hold');
-
 const container = document.querySelector('#container');
 const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('.number');
@@ -26,16 +18,6 @@ let nextAction = null;
 
 let keyType = null;
 let previousKeyType = null;
-
-// function updateCheck() {
-//     // if (firstNumber) showFirstNumber.innerText = firstNumber;
-//     // if (action) showOperator.innerText = action;
-//     // if (secondNumber) showSecondNumber.innerText = secondNumber;
-//     showFirstNumber.innerText = firstNumber;
-//     showOperator.innerText = action;
-//     showSecondNumber.innerText = secondNumber;
-//     showHold.innerText = holdNumber;
-// }
 
 function displayKeyType() {
     showKeyType.innerText = keyType;
@@ -169,8 +151,6 @@ function storeOperator() {
     // updateCheck();
     
 }
-
-// 1 + 2 * 3 = 7
    
 function calculate() {
     console.log("calculate");
@@ -181,36 +161,14 @@ function calculate() {
         // holdAction = null;
         // holdNumber = null;
     }
-    // displayKeyType();
-
-    // clear old second number value
-    // secondNumber = null;
 
     // if consecutive calculation, result should move to fistNumber
    if (previousKeyType === "calculate") {
         firstNumber = Number(display.innerText);    
-   } else {
-       
-        // // if storing low precendence operator, number on screen will need to be held
-        // if (holdAction && (nextAction === "x" || nextAction === "÷")) {
-        //     holdNumber = Number(display.innerText);
-        //     console.log("Holding number " + holdNumber);
-        // }
+   } else {        
         
-        // // store low precedence operators incase user inputs one of higher precedence
-        // if (action === "+" || action === "-") {
-        //     holdAction = action;
-        //     console.log("Holding action");
-        // } else {
-        //     console.log("Not");
-        // }
+       // if holding a number, second number should be result of that number and previous calculation
 
-        
-        
-        // if holding a number, second number should be result of that number and previous calculation
-        // console.log(keyType);
-    
-        // if (holdNumber &&  keyType === "calculate") {
         if (holdNumber) {
             if (action === "+") {
                 secondNumber = Number(display.innerText) + holdNumber;   
@@ -251,10 +209,6 @@ function calculate() {
     if (!action || (secondNumber != 0 && !secondNumber)) return;
     
     
-
-    // Remove .is-depressed class from all keys
-    // Array.from(this.parentNode.children).forEach(k => k.classList.remove('is-depressed'));
-    // this.classList.add('is-depressed');
    console.log(action);
     
     if (action === "+") {
@@ -274,9 +228,7 @@ function calculate() {
         result = firstNumber / secondNumber;
 
     }
-    // } else if (!action) {
-    //     result = secondNumber;
-    // }
+
 
     console.log(result);
     midFunction = true;
@@ -286,7 +238,6 @@ function calculate() {
         // secondNumber = null;
     }
 
-    // updateCheck();
 }
 
 // add number and operator button functionality
